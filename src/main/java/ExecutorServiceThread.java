@@ -16,7 +16,7 @@ public class ExecutorServiceThread {
     public int execute() {
         List<List<Integer>> partition = ListUtils.partition(list, list.size() / THREAD_COUNT);
         ExecutorService executorService = Executors.newFixedThreadPool(THREAD_COUNT);
-        List<CustomCallable> calculatorList = getSum(partition);
+        List<CustomCallable> calculatorList = getListOfCallables(partition);
         try {
             executorService.invokeAll(calculatorList);
         } catch (InterruptedException e) {
@@ -38,7 +38,7 @@ public class ExecutorServiceThread {
         return result;
     }
 
-    private List<CustomCallable> getSum(List<List<Integer>> list) {
+    private List<CustomCallable> getListOfCallables(List<List<Integer>> list) {
         return list.stream()
                 .map(CustomCallable::new)
                 .collect(Collectors.toList());
