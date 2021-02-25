@@ -10,8 +10,7 @@ public class ExtendedThread extends Thread {
 
     public void run() {
         while (counter.getNumber() != 100) {
-            int value = counter.increment();
-            logger.info("Extended thread:" + value);
+            logger.info("Extended thread:" + counter.increment());
         }
     }
 }

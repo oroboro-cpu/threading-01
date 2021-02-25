@@ -11,8 +11,7 @@ public class RunnableThread implements Runnable {
     @Override
     public void run() {
         while (counter.getNumber() != 100) {
-            int value = counter.increment();
-            logger.info("Runnable thread: " + value);
+            logger.info("Runnable thread: " + counter.increment());
         }
     }
 }
